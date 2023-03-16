@@ -1,3 +1,8 @@
+// Just Retrive the status of particular order which is placed by
+// that particular user 
+// But in admin side, retrive the order of every user by orderid
+
+
 import { ApiProperty } from '@nestjs/swagger'; 
 
 //input data that might come from frontend
@@ -12,3 +17,4 @@ export class CreateOrderStatusDto {
     updatedDate: string;
 
 }
+

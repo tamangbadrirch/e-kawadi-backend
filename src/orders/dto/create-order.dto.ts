@@ -1,25 +1,22 @@
-import { ApiProperty } from '@nestjs/swagger'; 
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger'; 
 export class CreateOrderDto {
-    @ApiProperty() //just for swagger api documentation
-    id: number;  
+    // @ApiProperty() //just for swagger api documentation
+    // id: number;  
   @ApiProperty() //just for swagger api documentation
-    orderDate: string;
+    category: string;
     @ApiProperty()
-    orderBy: string;
+    item: string;
     @ApiProperty() //just for swagger api documentation
-    orderStatus: string;
+    pickupDate: Date;
     @ApiProperty()
-    paymentId: number;
+    pickupTime: Date;
     @ApiProperty()
-    itemsId: number;
+    pickupLocation: string;
     @ApiProperty()
-    userId: number;
-    @ApiProperty()
-    createdDate: string;
-    @ApiProperty()
-    udpatedDate: string;
-
-
-
-    
+    paymentMethod: string;
+    @ApiPropertyOptional({default:new Date()}) //just for swagger api documentation
+    createdDate: Date;
+    @ApiPropertyOptional() //just for swagger api documentation
+    updatedDate: Date;
+       
 }

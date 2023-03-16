@@ -5,6 +5,9 @@ export type CategoryDocument = Category & Document;
 
 @Schema()
 export class Category {
+  @Prop({ required: true, type: Number })
+  id: Number;
+
   @Prop({ required: true, type: String })
   category: string;
 
