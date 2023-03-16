@@ -6,13 +6,13 @@ export class CreateItemDto {
     id: number;  
   @ApiProperty() //just for swagger api documentation
     itemName: string;
-    @ApiProperty()
-    units: string;
-    @ApiProperty() //just for swagger api documentation
-    categoryId: number;
-    @ApiProperty()
-    createdDate: string;
-    @ApiProperty()
-    updatedDate: string;
+    // @ApiProperty()
+    // units: string;
+    // @ApiProperty() //just for swagger api documentation
+    // categoryId: number;
+    // @ApiProperty()
+    // createdDate: string;
+    // @ApiProperty()
+    // updatedDate: string;
   }
   

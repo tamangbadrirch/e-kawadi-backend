@@ -12,16 +12,15 @@ export class CategoryService {
 @InjectModel(Category.name) private categoryModal:Model<Category>,
   ){}
   create(createCategoryDto: CreateCategoryDto) {
-    const user = this.categoryModal.create({
+    const category = this.categoryModal.create({
       category:createCategoryDto.category,
      
     });
-  
-    return Category;
+    return category;
   }
 
   findAll() {
-    return `This action returns all categories`;
+    return this.categoryModal.find({}).exec();
   }
 
   findOne(id: number) {

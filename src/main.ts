@@ -8,10 +8,12 @@ async function bootstrap() {
     .setTitle('Second Life')
     .setDescription('discription')
     .setVersion('1')
+    .addServer('/api')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
   app.enableCors() //front end ko url or port halne ["localhost:3000"]
-  await app.listen(5001);
+  app.setGlobalPrefix('/api')
+  await app.listen(5000);
 }
 bootstrap();

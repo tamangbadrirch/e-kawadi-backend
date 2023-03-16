@@ -16,8 +16,8 @@ export class CategoryController {
   @Post()
   async create(@Body() createCategoryDto: CreateCategoryDto,@Res() response:Response) {
     try{
-      const allCategory=await this.categoryService.create(createCategoryDto)
-      response.send({data:allCategory, message:'Success'}).status(201);
+      const category=await this.categoryService.create(createCategoryDto)
+      response.send({data:category, message:'Success'}).status(201);
     }catch(e){
       console.log(e)
       response.send({data:null,message:'Internal server error'}).status(500);
@@ -27,8 +27,15 @@ export class CategoryController {
 
 //  url: http://localhost:5000/user will hit this function using get method
   @Get()
-  findAll() {
-    return this.categoryService.findAll();
+ async findAll(@Res() response:Response) {
+    
+    try{
+      const allCategory=await  this.categoryService.findAll();
+      response.send({data:allCategory, message:'Success'}).status(200);
+    }catch(e){
+      console.log(e)
+      response.send({data:null,message:'Internal server error'}).status(500);
+    }
   }
 
 //  url: http://localhost:5000/user/454784848486dd4   will hit this function using get method

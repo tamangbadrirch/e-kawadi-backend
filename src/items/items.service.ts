@@ -12,10 +12,8 @@ export class ItemsService {
 @InjectModel(Items.name) private itemModal:Model<Items>,
   ){}
   create(createItemDto: CreateItemDto) {
-    const user = this.itemModal.create({
-      categoryName:createItemDto.categoryName,
-      items:createItemDto.items
-    });
+    //make necessary change later
+    const user = this.itemModal.create(createItemDto);
   
     return Items;
   }
