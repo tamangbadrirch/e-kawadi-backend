@@ -6,21 +6,11 @@ export class CreateItemDto {
   @ApiProperty({default:'category name'})
   categoryName: string;
 
-    @ApiProperty()
-  item: string;
+  @ApiProperty()
+  items: string;
 
-  @ApiPropertyOptional({default:new Date()}) //just for swagger api documentation
-  createdDate: Date;
+  
 
-  @ApiPropertyOptional() //just for swagger api documentation
-  updatedDate: Date;
-
-
-//   @ApiProperty({default:0})
-//   units: number;
-
-//   @ApiProperty()
-//   categoryId: number;
 
   }
   

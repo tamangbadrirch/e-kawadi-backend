@@ -21,10 +21,11 @@ export class UsersService {
       // username:new Date().toISOString(),
       username:createUserDto.userName,
       email:createUserDto.email,
+
       password:createUserDto.password
     });
   
-    return user;
+    return  user;
   }
 
   findAll() {

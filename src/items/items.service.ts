@@ -12,25 +12,45 @@ export class ItemsService {
 @InjectModel(Items.name) private itemModal:Model<Items>,
   ){}
   create(createItemDto: CreateItemDto) {
-    //make necessary change later
-    const user = this.itemModal.create(createItemDto);
-  
-    return Items;
+    const item = this.itemModal.create({
+      categoryId:createItemDto.categoryName,
+      itemName:createItemDto.items,
+      // unit:createItemDto.unit,
+    });
+    return item;
   }
 
   findAll() {
-    return `This action returns all items`;
+    return this.itemModal.find({}).populate('categoryId').exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} item`;
+  findOne(id: string) {
+    return this.itemModal.findOne({_id:id})
   }
 
-  update(id: number, updateItemDto: UpdateItemDto) {
-    return `This action updates a #${id} item`;
+  //updaet api reamian
+ async update(id: string, updateItemDto: UpdateItemDto) {
+    const item=await this.itemModal.findOne({_id:id})
+    if(item){
+    
+      item.itemName=updateItemDto.items??item.itemName
+      // item.unit=updateItemDto.unit??item.unit
+     await item.save()
+    }
+    return item;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} item`;
+
+  //delete api remain
+ async remove(id: string) {
+    // this.categoryModal.deleteOne({_id:id});
+    // this.categoryModal.findOneAndDelete({_id:id})
+    const item=await this.itemModal.findOne({_id:id})
+    if(item){
+      item.delete()
+    }
+    return item;
   }
 }
+
+

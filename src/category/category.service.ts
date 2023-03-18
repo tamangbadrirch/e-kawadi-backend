@@ -23,15 +23,29 @@ export class CategoryService {
     return this.categoryModal.find({}).exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} category`;
+  findOne(id: string) {
+    return this.categoryModal.findOne({_id:id})
   }
 
-  update(id: number, updateUserDto: UpdateCategoryDto) {
-    return `This action updates a #${id} category`;
+  //updaet api reamian
+ async update(id: string, updateCategoryDto: UpdateCategoryDto) {
+    const category=await this.categoryModal.findOne({_id:id})
+    if(category){
+      category.category=updateCategoryDto.category??category.category
+     await category.save()
+    }
+    return category;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} category`;
+
+  //delete api remain
+ async remove(id: string) {
+    // this.categoryModal.deleteOne({_id:id});
+    // this.categoryModal.findOneAndDelete({_id:id})
+    const category=await this.categoryModal.findOne({_id:id})
+    if(category){
+      category.delete()
+    }
+    return category;
   }
 }

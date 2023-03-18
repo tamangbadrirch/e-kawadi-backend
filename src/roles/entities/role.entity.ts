@@ -2,14 +2,11 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type RolesDocument = Roles & Document;
+export type RolesDocument = Role & Document;
 @Schema()
-export class Roles {
-  @Prop({ required: true, type: Number })
-  id: Number;
-
+export class Role {
   @Prop({ required: true, type: String })
-  roles: string;
+  name: string;
 
   //include createdAt and update at in all the schema as per er
   @Prop({type:Date,default:new Date()})
@@ -21,7 +18,7 @@ export class Roles {
 
 
 //Category Schema Instance
-export const RolesSchema = SchemaFactory.createForClass(Roles);
+export const RolesSchema = SchemaFactory.createForClass(Role);
 
 /*list of mongo db data type
    String 

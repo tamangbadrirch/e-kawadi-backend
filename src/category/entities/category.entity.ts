@@ -5,8 +5,6 @@ export type CategoryDocument = Category & Document;
 
 @Schema()
 export class Category {
-  @Prop({ required: true, type: Number })
-  id: Number;
 
   @Prop({ required: true, type: String })
   category: string;
@@ -14,10 +12,10 @@ export class Category {
 
   //include createdAt and update at in all the schema as per er
   @Prop({type:Date,default:new Date()})
-  createdAt:Date
+  createdAt:Date;
 
   @Prop({type:Date,default:new Date()})
-  updatedAt:Date
+  updatedAt:Date;
 }
 
 //Category Schema Instance

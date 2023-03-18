@@ -40,21 +40,61 @@ export class CategoryController {
 
 //  url: http://localhost:5000/user/454784848486dd4   will hit this function using get method
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.categoryService.findOne(+id);
+ async findOne(@Param('id') id: string,@Res() response:Response) {
+    try{
+      const category=await  this.categoryService.findOne(id);
+     return response.send({data:category, message:'Success'}).status(201);
+    }catch(e){
+      console.log(e)
+   return   response.send({data:null,message:'Internal server error'}).status(500);
+    }
+   
   }
 
   //  url: http://localhost:5000/user/234343dsdsf will hit this function using patch method
+  // @Patch(':id')
+  // update(
+  //   @Param('id') id: string, 
+  //   @Body() updateCategoryDto: UpdateCategoryDto) {
+  //   return this.categoryService.update(+id, updateCategoryDto);
+  // }
   @Patch(':id')
-  update(
-    @Param('id') id: string, 
-    @Body() updateUserDto: UpdateCategoryDto) {
-    return this.categoryService.update(+id, updateUserDto);
+  async update(
+    @Param('id') id: string,
+    @Body() updateCategoryDto: UpdateCategoryDto,
+    @Res() response: Response,
+  ) {
+    // return this.employeeService.update(+id, updateEmployeeDto);
+    try {
+      const category = await this.categoryService.update(id, updateCategoryDto);
+      return response
+        .send({ data: category, message: 'Successfully updated' })
+        .status(201);
+    } catch (e) {
+      response
+        .send({ data: null, message: 'Internal server error' })
+        .status(500);
+    }
   }
 
+
   //  url: http://localhost:5000/user/4757478573434 will hit this function using delete method
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.categoryService.remove(+id);
+  // }
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.categoryService.remove(+id);
+  async remove(@Param('id') id: string, @Res() response: Response) {
+    // return this.employeeService.remove(id);
+    try {
+      const category = await this.categoryService.remove(id);
+      return response
+        .send({ data: category, message: 'Successfully deleted!' })
+        .status(201);
+    } catch (e) {
+      response
+        .send({ data: null, message: 'Internal Server Error!' })
+        .status(500);
+    }
   }
 }
