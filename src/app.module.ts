@@ -10,6 +10,9 @@ import { OrderStatusModule } from './order-status/order-status.module';
 import { RolesModule } from './roles/roles.module';
 import { ItemsModule } from './items/items.module';
 import { CategoryModule } from './category/category.module';
+import { UsermgmtModule } from './usermgmt/usermgmt.module';
+import { ModulesModule } from './modules/modules.module';
+import { RoleaccessModule } from './roleaccess/roleaccess.module';
 
 // @Module({
 //   imports: [MongooseModule.forRoot('mongodb://localhost:27017/secondDB')],
@@ -27,6 +30,9 @@ import { CategoryModule } from './category/category.module';
     RolesModule,
     ItemsModule,
     CategoryModule,
+    UsermgmtModule,
+    ModulesModule,
+    RoleaccessModule,
   ],
   controllers: [AppController],
   providers: [AppService],

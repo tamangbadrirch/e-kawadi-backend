@@ -45,27 +45,27 @@ export class Order {
 statusId: Number;
 }
 
-@Prop({
-  type:mongoose.Schema.Types.ObjectId,
-  ref:'Items'
-})
-itemsId: Number;
-}
+// @Prop({
+//   type:mongoose.Schema.Types.ObjectId,
+//   ref:'Items'
+// })
+// itemsId: Number;
+// }
 
-@Prop({
-  type:mongoose.Schema.Types.ObjectId,
-  ref:'User'
-})
-userId: Number;
-}
+// @Prop({
+//   type:mongoose.Schema.Types.ObjectId,
+//   ref:'User'
+// })
+// userId: Number;
+// }
 
 //include createdAt and update at in all the schema as per er
- @Prop({type:Date,default:new Date()})
-  createdAt:Date;
+//  @Prop({type:Date,default:new Date()})
+//   createdAt:Date;
 
-  @Prop({type:Date,default:new Date()})
-  updatedAt:Date;
-}
+//   @Prop({type:Date,default:new Date()})
+//   updatedAt:Date;
+// }
 
 //Category Schema Instance
 export const OrderSchema = SchemaFactory.createForClass(Order);
