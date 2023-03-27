@@ -1,7 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
 import { Role } from 'src/roles/entities/role.entity';
-import * as bcrypt from 'bcrypt';
 
 export type UserDocument = User & Document;
 
@@ -37,15 +36,5 @@ export class User {
   })
   roleId:Role
 }
-
-//User Schema Instance
 export const UserSchema = SchemaFactory.createForClass(User);
 
-/*list of mongo db data type
-   String 
-   Integer
-   Double
-   Boolean
-   Array;
-   etc...
-*/

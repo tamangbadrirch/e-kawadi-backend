@@ -8,13 +8,11 @@ import { Items, ItemsDocument } from './entities/item.entity';
 @Injectable()
 export class ItemsService {
   //on constructer we inject user model instance to intract with users collection in db
-  constructor(
-@InjectModel(Items.name) private itemModal:Model<Items>,
-  ){}
+  constructor(@InjectModel(Items.name) private itemModal: Model<Items>) {}
   create(createItemDto: CreateItemDto) {
     const item = this.itemModal.create({
-      categoryId:createItemDto.categoryName,
-      itemName:createItemDto.items,
+      categoryId: createItemDto.categoryName,
+      itemName: createItemDto.items,
       // unit:createItemDto.unit,
     });
     return item;
@@ -25,32 +23,31 @@ export class ItemsService {
   }
 
   findOne(id: string) {
-    return this.itemModal.findOne({_id:id})
+    return this.itemModal.findOne({ _id: id });
   }
 
+  findByCategoryId(id: string) {
+    return this.itemModal.find({ categoryId: id }).exec();
+  }
   //updaet api reamian
- async update(id: string, updateItemDto: UpdateItemDto) {
-    const item=await this.itemModal.findOne({_id:id})
-    if(item){
-    
-      item.itemName=updateItemDto.items??item.itemName
+  async update(id: string, updateItemDto: UpdateItemDto) {
+    const item = await this.itemModal.findOne({ _id: id });
+    if (item) {
+      item.itemName = updateItemDto.items ?? item.itemName;
       // item.unit=updateItemDto.unit??item.unit
-     await item.save()
+      await item.save();
     }
     return item;
   }
 
-
   //delete api remain
- async remove(id: string) {
+  async remove(id: string) {
     // this.categoryModal.deleteOne({_id:id});
     // this.categoryModal.findOneAndDelete({_id:id})
-    const item=await this.itemModal.findOne({_id:id})
-    if(item){
-      item.delete()
+    const item = await this.itemModal.findOne({ _id: id });
+    if (item) {
+      item.delete();
     }
     return item;
   }
 }
-
-

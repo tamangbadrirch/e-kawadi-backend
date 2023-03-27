@@ -5,19 +5,18 @@ export type ItemsDocument = Items & Document;
 
 @Schema()
 export class Items {
-
   @Prop({ required: true, type: String })
   itemName: string;
-  @Prop({ type: mongoose.Schema.Types.ObjectId ,ref:'Category'}) //foreign key
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }) //foreign key
   categoryId: Category;
-  //Should I put categoryName here or not? 
-  @Prop({type:Date,default:new Date()})
+  //Should I put categoryName here or not?
+  @Prop({ type: Date, default: new Date() })
   createdAt: Date;
-  @Prop({type:Date,default:null})
+  @Prop({ type: Date, default: null })
   updatedAt: Date;
 }
 
-//Items Schema Instance 
+//Items Schema Instance
 //varialbel name must be camel case
 //interface must be Capital case just for convention
 export const ItemsSchema = SchemaFactory.createForClass(Items);
