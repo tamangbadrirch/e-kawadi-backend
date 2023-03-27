@@ -9,8 +9,5 @@ export class CreateItemDto {
   @ApiProperty()
   items: string;
 
-  
-
-
   }
   

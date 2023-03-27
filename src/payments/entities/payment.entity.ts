@@ -1,15 +1,10 @@
-// export class Payment {}
-
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
+import {Order} from 'src/orders/entities/order.entity';
 export type PaymentDocument = Payment & Document;
 
 @Schema()
 export class Payment {
-
-  @Prop({ required: true, type: Number })
-  id: Number;
-
   @Prop({ required: true, type: String })
   paidTo: string;
 
@@ -27,6 +22,9 @@ export class Payment {
 
   @Prop({ required: true, type: String })
   paymentSlip: string;
+
+  @Prop({ type: mongoose.Schema.Types.ObjectId ,ref:'Order'}) //foreign key
+ orderid: Order;
 
   @Prop({type:Date,default:new Date()})
   createdAt: Date;

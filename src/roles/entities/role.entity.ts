@@ -1,22 +1,19 @@
-
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import mongoose, { Document } from 'mongoose';
+import {roleAccess } from 'src/roleaccess/entities/roleaccess.entity';
 
 export type RolesDocument = Role & Document;
 @Schema()
 export class Role {
   @Prop({ required: true, type: String })
-  name: string;
-
-  //include createdAt and update at in all the schema as per er
+  role: string;
+  @Prop({ type: mongoose.Schema.Types.ObjectId ,ref:'roleAccess'}) //foreign key
+  roleAccessid: roleAccess;
   @Prop({type:Date,default:new Date()})
   createdAt:Date
-
   @Prop({type:Date,default:new Date()})
   updatedAt:Date
 }
-
-
 //Category Schema Instance
 export const RolesSchema = SchemaFactory.createForClass(Role);
 

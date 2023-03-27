@@ -1,22 +1,18 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
-import { Category } from 'src/category/entities/category.entity';
+import { Category } from 'src/category/entities/category.entity'; //importing for foreign key
 export type ItemsDocument = Items & Document;
 
 @Schema()
 export class Items {
 
-
-
   @Prop({ required: true, type: String })
   itemName: string;
-
-  @Prop({ type: mongoose.Schema.Types.ObjectId ,ref:'Category'})
+  @Prop({ type: mongoose.Schema.Types.ObjectId ,ref:'Category'}) //foreign key
   categoryId: Category;
-
+  //Should I put categoryName here or not? 
   @Prop({type:Date,default:new Date()})
   createdAt: Date;
-
   @Prop({type:Date,default:null})
   updatedAt: Date;
 }

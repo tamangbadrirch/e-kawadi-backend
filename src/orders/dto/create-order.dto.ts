@@ -5,9 +5,9 @@ export class CreateOrderDto {
   @ApiProperty() //just for swagger api documentation
     category: string;
     @ApiProperty()
-    item: string;
+    items: string;
      @ApiProperty()
-    qty: number;
+    quantity: number;
     @ApiProperty()
     unit: string;
     @ApiProperty() //just for swagger api documentation

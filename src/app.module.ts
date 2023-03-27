@@ -10,7 +10,6 @@ import { OrderStatusModule } from './order-status/order-status.module';
 import { RolesModule } from './roles/roles.module';
 import { ItemsModule } from './items/items.module';
 import { CategoryModule } from './category/category.module';
-import { UsermgmtModule } from './usermgmt/usermgmt.module';
 import { ModulesModule } from './modules/modules.module';
 import { RoleaccessModule } from './roleaccess/roleaccess.module';
 
@@ -30,7 +29,6 @@ import { RoleaccessModule } from './roleaccess/roleaccess.module';
     RolesModule,
     ItemsModule,
     CategoryModule,
-    UsermgmtModule,
     ModulesModule,
     RoleaccessModule,
   ],
