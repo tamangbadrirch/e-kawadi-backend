@@ -3,7 +3,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
-import { User, UserSchema } from './users/entities/user.entity';
 import { OrdersModule } from './orders/orders.module';
 import { PaymentsModule } from './payments/payments.module';
 import { OrderStatusModule } from './order-status/order-status.module';
@@ -12,6 +11,9 @@ import { ItemsModule } from './items/items.module';
 import { CategoryModule } from './category/category.module';
 import { ModulesModule } from './modules/modules.module';
 import { RoleaccessModule } from './roleaccess/roleaccess.module';
+import { AuthModule } from './auth/auth.module';
+import { JwtAuthGuard } from './auth/jwt-auth.guards';
+import { APP_GUARD } from '@nestjs/core';
 
 // @Module({
 //   imports: [MongooseModule.forRoot('mongodb://localhost:27017/secondDB')],
@@ -31,8 +33,13 @@ import { RoleaccessModule } from './roleaccess/roleaccess.module';
     CategoryModule,
     ModulesModule,
     RoleaccessModule,
+    AuthModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    //it will protect all the route
+    // { provide: APP_GUARD, useClass: JwtAuthGuard }
+  ],
 })
 export class AppModule {}
